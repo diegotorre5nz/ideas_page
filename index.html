@@ -6,7 +6,7 @@
 <title>AIDEAS — AI Software Implementations</title>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,700;0,900;1,700&family=Barlow:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; cursor: none !important; }
 
 :root {
   --black:  #0a0a0a;
@@ -31,16 +31,17 @@ body {
 /* ── CURSOR ── */
 .cursor {
   position: fixed;
-  width: 10px; height: 10px;
-  background: var(--accent);
+  width: 14px; height: 14px;
+  background: #b8ff00;
   border-radius: 50%;
   pointer-events: none;
-  z-index: 9999;
+  z-index: 999999;
   transform: translate(-50%, -50%);
-  transition: transform 0.1s, width 0.2s, height 0.2s;
-  mix-blend-mode: difference;
+  transition: width 0.15s, height 0.15s, opacity 0.2s;
+  top: -100px; left: -100px;
+  opacity: 0;
 }
-.cursor.big { width: 60px; height: 60px; }
+.cursor.big { width: 50px; height: 50px; opacity: 0.5; }
 
 /* ── NAV ── */
 nav {
@@ -1203,7 +1204,7 @@ footer {
   <div class="footer-copy" data-i18n="footer.copy">© 2026 AIDEAS · AI Software Implementations</div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 // ── TRANSLATIONS ──
 const i18n = {
   en: {
@@ -1378,10 +1379,17 @@ function setLang(lang) {
 
 // ── CURSOR ──
 const cursor = document.getElementById('cursor');
+let mouseX = -100, mouseY = -100;
+cursor.style.left = '-100px';
+cursor.style.top = '-100px';
 document.addEventListener('mousemove', e => {
-  cursor.style.left = e.clientX + 'px';
-  cursor.style.top  = e.clientY + 'px';
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+  cursor.style.left = mouseX + 'px';
+  cursor.style.top  = mouseY + 'px';
+  cursor.style.opacity = '1';
 });
+document.addEventListener('mouseleave', () => { cursor.style.opacity = '0'; });
 document.querySelectorAll('a, button, .service-card, .industry-item, .step').forEach(el => {
   el.addEventListener('mouseenter', () => cursor.classList.add('big'));
   el.addEventListener('mouseleave', () => cursor.classList.remove('big'));
