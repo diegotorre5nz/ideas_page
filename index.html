@@ -958,8 +958,8 @@ footer {
   </ul>
   <a href="#contact" class="nav-cta" data-i18n="nav.cta">Let's Talk</a>
   <div class="lang-toggle">
-    <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
-    <button class="lang-btn" id="btn-es" onclick="setLang('es')">ES</button>
+    <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+    <button class="lang-btn active" id="btn-es" onclick="setLang('es')">ES</button>
   </div>
 </nav>
 
@@ -1067,13 +1067,14 @@ footer {
       <div class="case-label" data-i18n="case.label">Featured Implementation</div>
       <h2 class="case-title">WhatsApp<br>Customer<br><em data-i18n="case.title.em">Service Bot</em></h2>
       <p class="case-desc" data-i18n="case.desc">
-        A fully automated customer service chatbot deployed via WhatsApp for a waste collection company. Handles registration, collection scheduling, confirmations and Q&A — entirely in Spanish — without a single human agent.
+        A fully automated customer service chatbot deployed via WhatsApp for a waste collection company. Handles registration, collection scheduling, confirmations and Q&A — fluently in both Spanish and English — without a single human agent.
       </p>
       <div class="case-tags">
         <span class="tag accent" data-i18n="case.tag.live">Live in Production</span>
         <span class="tag">WhatsApp Business</span>
         <span class="tag">Gemini AI</span>
         <span class="tag">Spanish NLP</span>
+        <span class="tag">English NLP</span>
         <span class="tag">FastAPI</span>
         <span class="tag">Twilio</span>
       </div>
@@ -1239,7 +1240,7 @@ const i18n = {
     's6.desc': "Not sure where to start? We audit your operations, identify the highest-ROI AI opportunities, and deliver a concrete implementation roadmap.",
     'case.label': 'Featured Implementation',
     'case.title.em': 'Service Bot',
-    'case.desc': 'A fully automated customer service chatbot deployed via WhatsApp for a waste collection company. Handles registration, collection scheduling, confirmations and Q&A — entirely in Spanish — without a single human agent.',
+    'case.desc': 'A fully automated customer service chatbot deployed via WhatsApp for a waste collection company. Handles registration, collection scheduling, confirmations and Q&A — fluently in both Spanish and English — without a single human agent.',
     'case.tag.live': 'Live in Production',
     'case.cta': 'Request a demo',
     'case.m1': 'Automated',
@@ -1315,7 +1316,7 @@ const i18n = {
     's6.desc': '¿No sabes por dónde empezar? Auditamos tus operaciones, identificamos las oportunidades de IA con mayor ROI y entregamos un plan de implementación concreto.',
     'case.label': 'Implementación Destacada',
     'case.title.em': 'Bot de Servicio',
-    'case.desc': 'Chatbot de atención al cliente totalmente automatizado desplegado vía WhatsApp para una empresa de recolección de residuos. Gestiona registro, agendamiento, confirmaciones y preguntas — íntegramente en español — sin ningún agente humano.',
+    'case.desc': 'Chatbot de atención al cliente totalmente automatizado desplegado vía WhatsApp para una empresa de recolección de residuos. Gestiona registro, agendamiento, confirmaciones y preguntas — con fluidez en español e inglés — sin ningún agente humano.',
     'case.tag.live': 'En Producción',
     'case.cta': 'Solicitar una demo',
     'case.m1': 'Automatizado',
@@ -1362,7 +1363,7 @@ const i18n = {
   }
 };
 
-let currentLang = 'en';
+let currentLang = 'es';
 
 function setLang(lang) {
   currentLang = lang;
@@ -1373,10 +1374,12 @@ function setLang(lang) {
     const key = el.getAttribute('data-i18n');
     if (i18n[lang][key] !== undefined) el.textContent = i18n[lang][key];
   });
-  // Update chat placeholder
   const ph = document.getElementById('chat-placeholder');
   if (ph) ph.placeholder = lang === 'es' ? 'Escribe un mensaje...' : 'Type a message...';
 }
+
+// Apply Spanish on load
+document.addEventListener('DOMContentLoaded', () => setLang('es'));
 
 // ── CURSOR ──
 const cursor = document.getElementById('cursor');
