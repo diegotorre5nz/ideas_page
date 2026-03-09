@@ -958,8 +958,8 @@ footer {
   </ul>
   <a href="#contact" class="nav-cta" data-i18n="nav.cta">Let's Talk</a>
   <div class="lang-toggle">
-    <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
-    <button class="lang-btn active" id="btn-es" onclick="setLang('es')">ES</button>
+    <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" id="btn-es" onclick="setLang('es')">ES</button>
   </div>
 </nav>
 
@@ -1363,7 +1363,8 @@ const i18n = {
   }
 };
 
-let currentLang = 'es';
+const params = new URLSearchParams(window.location.search);
+let currentLang = params.get('lang') || 'es';
 
 function setLang(lang) {
   currentLang = lang;
@@ -1378,8 +1379,8 @@ function setLang(lang) {
   if (ph) ph.placeholder = lang === 'es' ? 'Escribe un mensaje...' : 'Type a message...';
 }
 
-// Apply Spanish on load
-document.addEventListener('DOMContentLoaded', () => setLang('es'));
+// Auto-detect language based on domain
+document.addEventListener('DOMContentLoaded', () => setLang(currentLang));
 
 // ── CURSOR ──
 const cursor = document.getElementById('cursor');
