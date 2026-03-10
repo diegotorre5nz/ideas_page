@@ -14,7 +14,7 @@ html, html * { cursor: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAA
   --white:  #f5f2e8;
   --accent: #b8ff00;
   --grey:   #1a1a1a;
-  --mid:    #555;
+  --mid:    rgba(245,242,232,0.75);
   --light:  #d0cfc9;
 }
 
@@ -354,7 +354,7 @@ section { padding: 7rem 3rem; }
 .service-desc {
   font-size: 0.88rem;
   line-height: 1.7;
-  color: var(--mid);
+  color: rgba(245,242,232,0.75);
   font-weight: 300;
 }
 
@@ -542,9 +542,7 @@ section { padding: 7rem 3rem; }
   display: flex;
   gap: 0.6rem;
   align-items: flex-end;
-  opacity: 0;
-  transform: translateY(10px);
-  animation: msgIn 0.4s forwards;
+  opacity: 1;
 }
 
 @keyframes msgIn { to { opacity:1; transform:translateY(0); } }
@@ -564,6 +562,7 @@ section { padding: 7rem 3rem; }
 
 .msg.user .msg-bubble {
   background: var(--accent);
+  color: var(--black);
 }
 
 .msg-dot {
@@ -709,7 +708,7 @@ section { padding: 7rem 3rem; }
 .step-desc {
   font-size: 0.85rem;
   line-height: 1.65;
-  color: var(--mid);
+  color: rgba(245,242,232,0.75);
   font-weight: 300;
 }
 
@@ -940,6 +939,151 @@ footer {
   .metrics { grid-template-columns: 1fr 1fr; }
   .hero-stats { gap: 1.5rem; }
   footer { flex-direction: column; align-items: flex-start; }
+  .pricing-grid { grid-template-columns: 1fr; }
+}
+
+/* ── PRICING ── */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(245,242,232,0.08);
+  border: 1px solid rgba(245,242,232,0.08);
+  margin-top: 4rem;
+}
+
+.pricing-card {
+  background: var(--black);
+  padding: 3rem 2.5rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: background 0.3s;
+}
+
+.pricing-card.featured {
+  background: var(--grey);
+}
+
+.pricing-card.featured::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--accent);
+}
+
+.pricing-tier {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+}
+
+.pricing-price {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 3.5rem;
+  line-height: 1;
+  color: var(--white);
+  margin-bottom: 0.3rem;
+}
+
+.pricing-price sup {
+  font-size: 1.2rem;
+  vertical-align: super;
+  font-weight: 700;
+}
+
+.pricing-period {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--mid);
+  margin-bottom: 2rem;
+}
+
+.pricing-desc {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: rgba(245,242,232,0.75);
+  margin-bottom: 2rem;
+  font-weight: 300;
+}
+
+.pricing-features {
+  list-style: none;
+  margin-bottom: 2.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.pricing-features li {
+  font-size: 0.82rem;
+  color: var(--light);
+  font-weight: 300;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  line-height: 1.4;
+}
+
+.pricing-features li::before {
+  content: '✦';
+  color: var(--accent);
+  font-size: 0.5rem;
+  margin-top: 0.35rem;
+  flex-shrink: 0;
+}
+
+.pricing-features li.dim {
+  color: var(--mid);
+}
+
+.pricing-features li.dim::before {
+  color: #333;
+}
+
+.pricing-btn {
+  display: block;
+  text-align: center;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.85rem 1.5rem;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+  border: 1px solid rgba(245,242,232,0.15);
+  color: var(--white);
+  background: transparent;
+}
+
+.pricing-card.featured .pricing-btn {
+  background: var(--accent);
+  color: var(--black);
+  border-color: var(--accent);
+}
+
+.pricing-btn:hover {
+  background: var(--accent);
+  color: var(--black);
+  border-color: var(--accent);
+}
+
+.pricing-limit {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.08em;
+  color: var(--mid);
+  text-transform: uppercase;
+  margin-bottom: 0.3rem;
 }
 </style>
 </head>
@@ -953,6 +1097,7 @@ footer {
   <ul class="nav-links">
     <li><a href="#services" data-i18n="nav.services">Services</a></li>
     <li><a href="#case" data-i18n="nav.case">Case Study</a></li>
+    <li><a href="#pricing" data-i18n="nav.pricing">Pricing</a></li>
     <li><a href="#how" data-i18n="nav.how">Process</a></li>
     <li><a href="#industries" data-i18n="nav.industries">Industries</a></li>
   </ul>
@@ -1125,6 +1270,76 @@ footer {
   </div>
 </section>
 
+<!-- PRICING -->
+<section id="pricing">
+  <div class="section-label reveal" data-i18n="pricing.label">Bot de Servicio</div>
+  <h2 class="section-title reveal reveal-delay-1"><span data-i18n="pricing.title1">Simple</span><br><em data-i18n="pricing.title2">Pricing</em></h2>
+
+  <div class="pricing-grid">
+
+    <!-- STARTER -->
+    <div class="pricing-card">
+      <div class="pricing-tier" data-i18n="p1.tier">Starter</div>
+      <div class="pricing-price"><sup>$</sup><span data-i18n="p1.price">1,000</span></div>
+      <div class="pricing-period" data-i18n="p1.period">MXN / month</div>
+      <p class="pricing-desc" data-i18n="p1.desc">Perfect for small businesses getting started with WhatsApp automation.</p>
+      <ul class="pricing-features">
+        <li><span data-i18n="p1.f1">1,000 messages / month</span></li>
+        <li><span data-i18n="p1.f2">2 organisation users</span></li>
+        <li><span data-i18n="p1.f3">WhatsApp AI Bot</span></li>
+        <li><span data-i18n="p1.f4">Admin Dashboard</span></li>
+        <li><span data-i18n="p1.f5">ES + EN language support</span></li>
+        <li><span data-i18n="p1.f6">Email + Chat support</span></li>
+        <li class="dim"><span data-i18n="p1.f7">Route optimisation</span></li>
+        <li class="dim"><span data-i18n="p1.f8">Custom workflows</span></li>
+        <li class="dim"><span data-i18n="p1.f9">Dedicated account manager</span></li>
+      </ul>
+      <a href="/cdn-cgi/l/email-protection#533b363f3f3c13323a373632207d323a" class="pricing-btn" data-i18n="p1.btn">Get Started →</a>
+    </div>
+
+    <!-- GROWTH -->
+    <div class="pricing-card featured">
+      <div class="pricing-tier" data-i18n="p2.tier">Growth</div>
+      <div class="pricing-price"><sup>$</sup><span data-i18n="p2.price">2,000</span></div>
+      <div class="pricing-period" data-i18n="p2.period">MXN / month</div>
+      <p class="pricing-desc" data-i18n="p2.desc">For growing operations that need automation, routing and a dedicated manager.</p>
+      <ul class="pricing-features">
+        <li><span data-i18n="p2.f1">5,000 messages / month</span></li>
+        <li><span data-i18n="p2.f2">5 organisation users</span></li>
+        <li><span data-i18n="p2.f3">WhatsApp AI Bot</span></li>
+        <li><span data-i18n="p2.f4">Admin Dashboard</span></li>
+        <li><span data-i18n="p2.f5">ES + EN language support</span></li>
+        <li><span data-i18n="p2.f6">Email + Chat support</span></li>
+        <li><span data-i18n="p2.f7">Route optimisation</span></li>
+        <li><span data-i18n="p2.f8">Custom workflows</span></li>
+        <li><span data-i18n="p2.f9">Dedicated account manager</span></li>
+      </ul>
+      <a href="/cdn-cgi/l/email-protection#18707d7474775879717c7d796b367971" class="pricing-btn" data-i18n="p2.btn">Get Started →</a>
+    </div>
+
+    <!-- SCALE -->
+    <div class="pricing-card">
+      <div class="pricing-tier" data-i18n="p3.tier">Scale</div>
+      <div class="pricing-price"><sup>$</sup><span data-i18n="p3.price">5,000</span></div>
+      <div class="pricing-period" data-i18n="p3.period">MXN / month</div>
+      <p class="pricing-desc" data-i18n="p3.desc">For established businesses with high volume and complex automation needs.</p>
+      <ul class="pricing-features">
+        <li><span data-i18n="p3.f1">Unlimited messages</span></li>
+        <li><span data-i18n="p3.f2">15 organisation users</span></li>
+        <li><span data-i18n="p3.f3">WhatsApp AI Bot</span></li>
+        <li><span data-i18n="p3.f4">Admin Dashboard</span></li>
+        <li><span data-i18n="p3.f5">ES + EN language support</span></li>
+        <li><span data-i18n="p3.f6">Email + Chat support</span></li>
+        <li><span data-i18n="p3.f7">Route optimisation</span></li>
+        <li><span data-i18n="p3.f8">Custom workflows</span></li>
+        <li><span data-i18n="p3.f9">Dedicated account manager</span></li>
+      </ul>
+      <a href="/cdn-cgi/l/email-protection#5d35383131321d3c3439383c2e733c34" class="pricing-btn" data-i18n="p3.btn">Get Started →</a>
+    </div>
+
+  </div>
+</section>
+
 <!-- HOW IT WORKS -->
 <section id="how">
   <div class="section-label reveal" data-i18n="how.label">The Process</div>
@@ -1206,12 +1421,13 @@ footer {
   <div class="footer-copy" data-i18n="footer.copy">© 2026 AIDEAS · AI Software Implementations</div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ── TRANSLATIONS ──
 const i18n = {
   en: {
     'nav.services': 'Services',
     'nav.case': 'Case Study',
+    'nav.pricing': 'Pricing',
     'nav.how': 'Process',
     'nav.industries': 'Industries',
     'nav.cta': "Let's Talk",
@@ -1284,10 +1500,35 @@ const i18n = {
     'footer.work': 'Work',
     'footer.contact': 'Contact',
     'footer.copy': '© 2026 AIDEAS · AI Software Implementations',
+    'pricing.label': 'Bot de Servicio',
+    'pricing.title1': 'Simple',
+    'pricing.title2': 'Pricing',
+    'p1.tier': 'Starter', 'p1.price': '1,000', 'p1.period': 'MXN / month',
+    'p1.desc': 'Perfect for small businesses getting started with WhatsApp automation.',
+    'p1.f1': '1,000 messages / month', 'p1.f2': '2 organisation users',
+    'p1.f3': 'WhatsApp AI Bot', 'p1.f4': 'Admin Dashboard',
+    'p1.f5': 'ES + EN language support', 'p1.f6': 'Email + Chat support',
+    'p1.f7': 'Route optimisation', 'p1.f8': 'Custom workflows',
+    'p1.f9': 'Dedicated account manager', 'p1.btn': 'Get Started →',
+    'p2.tier': 'Growth', 'p2.price': '2,000', 'p2.period': 'MXN / month',
+    'p2.desc': 'For growing operations that need automation, routing and a dedicated manager.',
+    'p2.f1': '5,000 messages / month', 'p2.f2': '5 organisation users',
+    'p2.f3': 'WhatsApp AI Bot', 'p2.f4': 'Admin Dashboard',
+    'p2.f5': 'ES + EN language support', 'p2.f6': 'Email + Chat support',
+    'p2.f7': 'Route optimisation', 'p2.f8': 'Custom workflows',
+    'p2.f9': 'Dedicated account manager', 'p2.btn': 'Get Started →',
+    'p3.tier': 'Scale', 'p3.price': '5,000', 'p3.period': 'MXN / month',
+    'p3.desc': 'For established businesses with high volume and complex automation needs.',
+    'p3.f1': 'Unlimited messages', 'p3.f2': '15 organisation users',
+    'p3.f3': 'WhatsApp AI Bot', 'p3.f4': 'Admin Dashboard',
+    'p3.f5': 'ES + EN language support', 'p3.f6': 'Email + Chat support',
+    'p3.f7': 'Route optimisation', 'p3.f8': 'Custom workflows',
+    'p3.f9': 'Dedicated account manager', 'p3.btn': 'Get Started →',
   },
   es: {
     'nav.services': 'Servicios',
     'nav.case': 'Caso de Éxito',
+    'nav.pricing': 'Precios',
     'nav.how': 'Proceso',
     'nav.industries': 'Industrias',
     'nav.cta': 'Hablemos',
@@ -1360,6 +1601,30 @@ const i18n = {
     'footer.work': 'Trabajos',
     'footer.contact': 'Contacto',
     'footer.copy': '© 2026 AIDEAS · Implementaciones de Software IA',
+    'pricing.label': 'Bot de Servicio',
+    'pricing.title1': 'Planes',
+    'pricing.title2': 'Simples',
+    'p1.tier': 'Inicial', 'p1.price': '1,000', 'p1.period': 'MXN / mes',
+    'p1.desc': 'Ideal para pequeñas empresas que comienzan con automatización por WhatsApp.',
+    'p1.f1': '1,000 mensajes / mes', 'p1.f2': '2 usuarios de organización',
+    'p1.f3': 'Bot IA para WhatsApp', 'p1.f4': 'Admin Dashboard',
+    'p1.f5': 'Soporte ES + EN', 'p1.f6': 'Soporte Email + Chat',
+    'p1.f7': 'Optimización de rutas', 'p1.f8': 'Flujos personalizados',
+    'p1.f9': 'Gestor de cuenta dedicado', 'p1.btn': 'Comenzar →',
+    'p2.tier': 'Crecimiento', 'p2.price': '2,000', 'p2.period': 'MXN / mes',
+    'p2.desc': 'Para operaciones en crecimiento que necesitan automatización, rutas y gestor dedicado.',
+    'p2.f1': '5,000 mensajes / mes', 'p2.f2': '5 usuarios de organización',
+    'p2.f3': 'Bot IA para WhatsApp', 'p2.f4': 'Admin Dashboard',
+    'p2.f5': 'Soporte ES + EN', 'p2.f6': 'Soporte Email + Chat',
+    'p2.f7': 'Optimización de rutas', 'p2.f8': 'Flujos personalizados',
+    'p2.f9': 'Gestor de cuenta dedicado', 'p2.btn': 'Comenzar →',
+    'p3.tier': 'Escala', 'p3.price': '5,000', 'p3.period': 'MXN / mes',
+    'p3.desc': 'Para empresas consolidadas con alto volumen y necesidades complejas de automatización.',
+    'p3.f1': 'Mensajes ilimitados', 'p3.f2': '15 usuarios de organización',
+    'p3.f3': 'Bot IA para WhatsApp', 'p3.f4': 'Admin Dashboard',
+    'p3.f5': 'Soporte ES + EN', 'p3.f6': 'Soporte Email + Chat',
+    'p3.f7': 'Optimización de rutas', 'p3.f8': 'Flujos personalizados',
+    'p3.f9': 'Gestor de cuenta dedicado', 'p3.btn': 'Comenzar →',
   }
 };
 
@@ -1456,13 +1721,4 @@ function addMessage(msg, delay) {
 }
 
 function runChat() {
-  container.innerHTML = '';
-  const msgs = chatMessages[currentLang];
-  msgs.forEach((msg, i) => addMessage(msg, i * 1400));
-  chatTimer = setTimeout(runChat, msgs.length * 1400 + 3000);
-}
-
-setTimeout(runChat, 800);
-</script>
-</body>
-</html>
+  container.innerHT
