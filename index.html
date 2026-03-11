@@ -1730,8 +1730,6 @@ function setLang(lang) {
 
 // Auto-detect language based on domain
 document.addEventListener('DOMContentLoaded', () => setLang(currentLang));
-
-// ── CURSOR ──
 const cursor = document.getElementById('cursor');
 let mx = -100, my = -100;
 
@@ -1818,10 +1816,6 @@ function runChat() {
 }
 
 // Start chat on page load
-document.addEventListener('DOMContentLoaded', () => {
-  runChat();
-});
-
 // Restart chat when language changes (already handled in setLang via runChat call)
 </script>
 </body>
