@@ -1,9 +1,71 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" prefix="og: https://ogp.me/ns#">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AIDEAS — AI Software Implementations</title>
+
+<!-- ── PRIMARY SEO ── -->
+<title>AIDEAS — Bots de WhatsApp e IA para Empresas | México & Nueva Zelanda</title>
+<meta name="description" content="Automatizamos tu negocio con bots de WhatsApp con inteligencia artificial. Agendamiento, atención al cliente y flujos automáticos. Servicio en México y Nueva Zelanda. Desde $1,000 MXN/mes.">
+<meta name="keywords" content="bot whatsapp mexico, chatbot whatsapp, automatización empresas, inteligencia artificial mexico, whatsapp business bot, ai implementation, bot whatsapp queretaro, ai consultant new zealand, whatsapp automation, chatbot precio mexico">
+<meta name="author" content="AIDEAS">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://aideas.lat/">
+
+<!-- ── HREFLANG (bilingual targeting) ── -->
+<link rel="alternate" hreflang="es" href="https://aideas.lat/">
+<link rel="alternate" hreflang="en" href="https://aideas.lat/?lang=en">
+<link rel="alternate" hreflang="en-NZ" href="https://aideas.nz/">
+<link rel="alternate" hreflang="x-default" href="https://aideas.lat/">
+
+<!-- ── OPEN GRAPH (WhatsApp / Facebook previews) ── -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://aideas.lat/">
+<meta property="og:title" content="AIDEAS — Bots de WhatsApp con IA para tu Negocio">
+<meta property="og:description" content="Automatizamos tu negocio con bots de WhatsApp inteligentes. Atención 24/7, agendamiento automático y flujos de trabajo. México y Nueva Zelanda.">
+<meta property="og:image" content="https://aideas.lat/og-image.jpg">
+<meta property="og:locale" content="es_MX">
+<meta property="og:locale:alternate" content="en_NZ">
+<meta property="og:site_name" content="AIDEAS">
+
+<!-- ── TWITTER CARD ── -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AIDEAS — Bots de WhatsApp con IA">
+<meta name="twitter:description" content="Automatizamos tu negocio con bots de WhatsApp inteligentes. México y Nueva Zelanda.">
+<meta name="twitter:image" content="https://aideas.lat/og-image.jpg">
+
+<!-- ── STRUCTURED DATA (Google Rich Results) ── -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "AIDEAS",
+  "description": "AI software implementations specialising in WhatsApp bots, business automation and AI integrations for businesses in Mexico and New Zealand.",
+  "url": "https://aideas.lat",
+  "logo": "https://aideas.lat/og-image.jpg",
+  "foundingDate": "2025",
+  "areaServed": [
+    { "@type": "Country", "name": "Mexico" },
+    { "@type": "Country", "name": "New Zealand" }
+  ],
+  "serviceType": [
+    "WhatsApp AI Bot Development",
+    "Business Process Automation",
+    "AI Customer Service",
+    "LLM Integration",
+    "AI Consulting"
+  ],
+  "priceRange": "$$",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "sales",
+    "email": "hello@aideas.lat",
+    "availableLanguage": ["Spanish", "English"]
+  },
+  "sameAs": []
+}
+</script>
+
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,700;0,900;1,700&family=Barlow:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -1636,6 +1698,9 @@ function setLang(lang) {
   document.getElementById('btn-en').classList.toggle('active', lang === 'en');
   document.getElementById('btn-es').classList.toggle('active', lang === 'es');
   document.documentElement.lang = lang;
+  document.title = lang === 'en'
+    ? 'AIDEAS — WhatsApp AI Bots & Automation | Mexico & New Zealand'
+    : 'AIDEAS — Bots de WhatsApp e IA para Empresas | México & Nueva Zelanda';
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
     if (i18n[lang][key] !== undefined) el.textContent = i18n[lang][key];
