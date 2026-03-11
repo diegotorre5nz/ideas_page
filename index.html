@@ -561,7 +561,7 @@ section { padding: 7rem 3rem; }
   font-family: 'Barlow Condensed', sans-serif;
   font-weight: 900;
   font-size: 0.8rem;
-  color: var(--white);
+  color: var(--black);
   flex-shrink: 0;
 }
 
@@ -665,7 +665,7 @@ section { padding: 7rem 3rem; }
 .chat-send {
   background: var(--accent);
   border: none;
-  color: var(--white);
+  color: var(--black);
   padding: 0.6rem 1rem;
   cursor: none;
   font-family: 'IBM Plex Mono', monospace;
@@ -1487,11 +1487,11 @@ footer {
     <li><a href="#how" data-i18n="nav.how">Process</a></li>
     <li><a href="/contact.html" id="footer-email-link" data-i18n="footer.contact">Contacto</a></li>
   </ul>
-  <div class="footer-email" id="footer-email-display">hola@aideas.lat</div>
+  <div class="footer-email" id="footer-email-display"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="fe9691929fbe9f979a9b9f8dd0929f8a">[email&#160;protected]</a></div>
   <div class="footer-copy" data-i18n="footer.copy">© 2026 AIDEAS · AI Software Implementations</div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ── TRANSLATIONS ──
 const i18n = {
   en: {
@@ -1797,12 +1797,4 @@ function addMessage(msg, delay) {
 function runChat() {
   container.innerHTML = '';
   const lang = currentLang;
-  const msgs = chatMessages[lang] || chatMessages['es'];
-  msgs.forEach((msg, i) => addMessage(msg, i * 1400));
-  chatTimer = setTimeout(runChat, msgs.length * 1400 + 3000);
-}
-
-setTimeout(runChat, 800);
-</script>
-</body>
-</html>
+  
