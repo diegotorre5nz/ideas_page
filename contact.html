@@ -401,12 +401,12 @@ main {
     <div class="contact-details">
       <div class="contact-item">
         <div class="contact-item-label" data-i18n="c.mexico">México</div>
-        <a href="/cdn-cgi/l/email-protection#d8b0b7b4b998b9b1bcbdb9abf6b4b9ac" class="contact-item-value"><span class="__cf_email__" data-cfemail="d7bfb8bbb697b6beb3b2b6a4f9bbb6a3">[email&#160;protected]</span></a>
+        <a href="#" class="contact-item-value" id="email-mx-link">—</a>
         <div class="contact-item-sub">Querétaro, México</div>
       </div>
       <div class="contact-item">
         <div class="contact-item-label" data-i18n="c.nz">Nueva Zelanda</div>
-        <a href="/cdn-cgi/l/email-protection#c9a1aca5a5a689a8a0adaca8bae7a7b3" class="contact-item-value"><span class="__cf_email__" data-cfemail="9ff7faf3f3f0dffef6fbfafeecb1f1e5">[email&#160;protected]</span></a>
+        <a href="#" class="contact-item-value" id="email-nz-link">—</a>
         <div class="contact-item-sub">Christchurch, New Zealand</div>
       </div>
       <div class="contact-item">
@@ -475,7 +475,21 @@ main {
   </div>
 </main>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
+// ── BUILD EMAILS AT RUNTIME (bypasses Cloudflare obfuscation) ──
+(function() {
+  const mx = ['hola', 'aideas', 'lat'];
+  const nz = ['hello', 'aideas', 'nz'];
+  const mxEmail = mx[0] + '@' + mx[1] + '.' + mx[2];
+  const nzEmail = nz[0] + '@' + nz[1] + '.' + nz[2];
+  window.__emails = { mx: mxEmail, nz: nzEmail };
+  document.addEventListener('DOMContentLoaded', () => {
+    const mxLink = document.getElementById('email-mx-link');
+    const nzLink = document.getElementById('email-nz-link');
+    if (mxLink) { mxLink.textContent = mxEmail; mxLink.href = 'mailto:' + mxEmail; }
+    if (nzLink) { nzLink.textContent = nzEmail; nzLink.href = 'mailto:' + nzEmail; }
+  });
+})();
 // ── TRANSLATIONS ──
 const i18n = {
   en: {
