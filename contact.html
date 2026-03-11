@@ -319,18 +319,21 @@ main {
   font-size: 1rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  background: transparent;
-  color: #25d366;
-  border: 1px solid #25d366;
+  background: #25d366;
+  color: #ffffff;
+  border: none;
   padding: 0.9rem 2rem;
   text-decoration: none;
-  transition: background 0.2s, color 0.2s;
+  transition: background 0.2s, transform 0.2s;
   cursor: none;
 }
 .wa-btn:hover {
-  background: #25d366;
-  color: var(--black);
+  background: #1fba57;
+  color: #ffffff;
+  transform: translateX(4px);
 }
+.wa-btn svg { transition: transform 0.2s; }
+.wa-btn:hover svg { transform: translateX(4px); }
 
 /* Success state */
 .form-success {
@@ -552,30 +555,31 @@ document.addEventListener('DOMContentLoaded', () => setLang(currentLang));
 const WA_NUMBER = '64210643428';
 
 function buildWaUrl() {
-  const name    = document.querySelector('input[name="name"]').value.trim();
-  const email   = document.querySelector('input[name="email"]').value.trim();
-  const phone   = document.querySelector('input[name="phone"]').value.trim();
-  const lang    = currentLang;
+  const name  = document.querySelector('input[name="name"]').value.trim();
+  const email = document.querySelector('input[name="email"]').value.trim();
+  const phone = document.querySelector('input[name="phone"]').value.trim();
+  const lang  = currentLang;
 
-  let msg;
+  let lines = [];
   if (lang === 'en') {
-    msg = `Hi, I'd like to talk about my project with Diego from AIDEAS.\n\nName: ${name || '—'}\nEmail: ${email || '—'}\nWhatsApp/Phone: ${phone || '—'}`;
+    lines.push("Hi, I'd like to talk about my project with Diego from AIDEAS.");
+    if (name)  lines.push('Name: ' + name);
+    if (email) lines.push('Email: ' + email);
+    if (phone) lines.push('WhatsApp/Phone: ' + phone);
   } else {
-    msg = `Hola, quisiera hablar de mi proyecto con Diego de AIDEAS.\n\nNombre: ${name || '—'}\nEmail: ${email || '—'}\nWhatsApp/Teléfono: ${phone || '—'}`;
+    lines.push('Hola, quisiera hablar de mi proyecto con Diego de AIDEAS.');
+    if (name)  lines.push('Nombre: ' + name);
+    if (email) lines.push('Email: ' + email);
+    if (phone) lines.push('WhatsApp/Teléfono: ' + phone);
   }
 
-  return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
+  return 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(lines.join('\n'));
 }
 
-// Update WA link whenever any field changes
-document.querySelectorAll('#contact-form input, #contact-form textarea').forEach(el => {
-  el.addEventListener('input', () => {
-    document.getElementById('wa-btn').href = buildWaUrl();
-  });
+// Update WA link only when clicked
+document.getElementById('wa-btn').addEventListener('click', function() {
+  this.href = buildWaUrl();
 });
-
-// Set initial URL on load
-document.getElementById('wa-btn').href = buildWaUrl();
 
 // ── FORM SUBMIT ──
 document.getElementById('contact-form').addEventListener('submit', async e => {
