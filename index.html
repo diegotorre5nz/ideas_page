@@ -915,6 +915,13 @@ footer {
 
 .footer-logo span { color: var(--accent); }
 
+.footer-email {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+}
+
 .footer-copy {
   font-family: 'IBM Plex Mono', monospace;
   font-size: 0.6rem;
@@ -1163,7 +1170,7 @@ footer {
     <li><a href="#how" data-i18n="nav.how">Process</a></li>
     <li><a href="#industries" data-i18n="nav.industries">Industries</a></li>
   </ul>
-  <a href="#contact" class="nav-cta" data-i18n="nav.cta">Let's Talk</a>
+  <a href="/contact.html" class="nav-cta" id="nav-cta-link" data-i18n="nav.cta">Hablemos</a>
   <div class="lang-toggle">
     <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
     <button class="lang-btn" id="btn-es" onclick="setLang('es')">ES</button>
@@ -1285,7 +1292,7 @@ footer {
         <span class="tag">FastAPI</span>
         <span class="tag">Twilio</span>
       </div>
-      <a href="#contact" class="case-link" data-i18n="case.cta">
+      <a href="/contact.html" class="case-link" data-i18n="case.cta">
         Request a demo
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
           <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
@@ -1468,7 +1475,7 @@ footer {
   <div class="cta-label" data-i18n="cta.label">Ready to build?</div>
   <h2 class="cta-title"><span data-i18n="cta.title1">Let's Talk</span><br><span data-i18n="cta.title2">About Your</span><br><span data-i18n="cta.title3">Project</span></h2>
   <p class="cta-sub" data-i18n="cta.sub">Tell us what you're building and we'll show you exactly how AI can make it faster, smarter, and more profitable.</p>
-  <a href="/cdn-cgi/l/email-protection#c3aba6afafac83a2aaa7a6a2b0eda2aa" class="cta-btn" data-i18n="cta.btn">Start the Conversation →</a>
+  <a href="/contact.html" class="cta-btn" id="cta-email-btn" data-i18n="cta.btn">Iniciar Conversación →</a>
 </section>
 
 <!-- FOOTER -->
@@ -1478,12 +1485,13 @@ footer {
     <li><a href="#services" data-i18n="nav.services">Services</a></li>
     <li><a href="#case" data-i18n="footer.work">Work</a></li>
     <li><a href="#how" data-i18n="nav.how">Process</a></li>
-    <li><a href="/cdn-cgi/l/email-protection#86eee3eaeae9c6e7efe2e3e7f5a8e7ef" data-i18n="footer.contact">Contact</a></li>
+    <li><a href="/contact.html" id="footer-email-link" data-i18n="footer.contact">Contacto</a></li>
   </ul>
+  <div class="footer-email" id="footer-email-display">hola@aideas.lat</div>
   <div class="footer-copy" data-i18n="footer.copy">© 2026 AIDEAS · AI Software Implementations</div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 // ── TRANSLATIONS ──
 const i18n = {
   en: {
@@ -1701,6 +1709,12 @@ function setLang(lang) {
   document.title = lang === 'en'
     ? 'AIDEAS — WhatsApp AI Bots & Automation | Mexico & New Zealand'
     : 'AIDEAS — Bots de WhatsApp e IA para Empresas | México & Nueva Zelanda';
+  // Update contact page links with lang param
+  const contactLinks = ['nav-cta-link', 'cta-email-btn', 'footer-email-link'];
+  contactLinks.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.href = lang === 'en' ? '/contact.html?lang=en' : '/contact.html';
+  });
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
     if (i18n[lang][key] !== undefined) el.textContent = i18n[lang][key];
