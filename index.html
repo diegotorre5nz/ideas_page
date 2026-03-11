@@ -1363,7 +1363,7 @@ footer {
         <li class="dim"><span data-i18n="p1.f8">Custom workflows</span></li>
         <li class="dim"><span data-i18n="p1.f9">Dedicated account manager</span></li>
       </ul>
-      <a href="/cdn-cgi/l/email-protection#533b363f3f3c13323a373632207d323a" class="pricing-btn" data-i18n="p1.btn">Get Started →</a>
+      <a href="/contact.html" class="pricing-btn" data-i18n="p1.btn">Get Started →</a>
     </div>
 
     <!-- GROWTH -->
@@ -1383,7 +1383,7 @@ footer {
         <li><span data-i18n="p2.f8">Custom workflows</span></li>
         <li><span data-i18n="p2.f9">Dedicated account manager</span></li>
       </ul>
-      <a href="/cdn-cgi/l/email-protection#18707d7474775879717c7d796b367971" class="pricing-btn" data-i18n="p2.btn">Get Started →</a>
+      <a href="/contact.html" class="pricing-btn" data-i18n="p2.btn">Get Started →</a>
     </div>
 
     <!-- SCALE -->
@@ -1403,7 +1403,7 @@ footer {
         <li><span data-i18n="p3.f8">Custom workflows</span></li>
         <li><span data-i18n="p3.f9">Dedicated account manager</span></li>
       </ul>
-      <a href="/cdn-cgi/l/email-protection#5d35383131321d3c3439383c2e733c34" class="pricing-btn" data-i18n="p3.btn">Get Started →</a>
+      <a href="/contact.html" class="pricing-btn" data-i18n="p3.btn">Get Started →</a>
     </div>
 
   </div>
@@ -1714,6 +1714,9 @@ function setLang(lang) {
   contactLinks.forEach(id => {
     const el = document.getElementById(id);
     if (el) el.href = lang === 'en' ? '/contact.html?lang=en' : '/contact.html';
+  });
+  document.querySelectorAll('.pricing-btn').forEach(el => {
+    el.href = lang === 'en' ? '/contact.html?lang=en' : '/contact.html';
   });
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
