@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contacto — AIDEAS</title>
+<meta name="description" content="Contáctanos para automatizar tu negocio con IA y WhatsApp. México y Nueva Zelanda.">
+<link rel="canonical" href="https://aideas.lat/contact.html">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,700;0,900;1,700&family=Barlow:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, html * { cursor: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQI12NgAAIABQAABjE+ibYAAAAASUVORK5CYII=") 0 0, none !important; }
+
+:root {
+  --black:  #0a0a0a;
+  --white:  #f5f2e8;
+  --accent: #b8ff00;
+  --grey:   #1a1a1a;
+  --mid:    rgba(245,242,232,0.75);
+  --light:  #d0cfc9;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: 'Barlow', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+  cursor: none;
+  min-height: 100vh;
+}
+
+/* ── CURSOR ── */
+.cursor {
+  position: fixed;
+  width: 10px; height: 10px;
+  background: var(--accent);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  top: 0; left: 0;
+  transform: translate(-100px, -100px);
+  transition: width 0.2s, height 0.2s;
+  will-change: transform;
+}
+.cursor.big { width: 50px; height: 50px; }
+
+/* ── GRID BG ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(184,255,0,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(184,255,0,0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 3rem;
+  border-bottom: 1px solid rgba(245,242,232,0.08);
+  background: rgba(10,10,10,0.95);
+  backdrop-filter: blur(12px);
+}
+
+.nav-logo {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 1.4rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--white);
+  text-decoration: none;
+}
+.nav-logo span { color: var(--accent); }
+
+.nav-back {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mid);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color 0.2s;
+}
+.nav-back:hover { color: var(--accent); }
+
+.lang-toggle {
+  display: flex;
+  gap: 0.3rem;
+}
+.lang-btn {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: none;
+  border: 1px solid rgba(245,242,232,0.15);
+  color: var(--mid);
+  padding: 0.3rem 0.7rem;
+  cursor: none;
+  transition: all 0.2s;
+}
+.lang-btn.active { background: var(--accent); color: var(--black); border-color: var(--accent); }
+.lang-btn:hover:not(.active) { border-color: var(--accent); color: var(--accent); }
+
+/* ── MAIN ── */
+main {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-top: 80px;
+}
+
+/* ── LEFT PANEL ── */
+.contact-left {
+  padding: 6rem 4rem 4rem 3rem;
+  border-right: 1px solid rgba(245,242,232,0.06);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contact-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 2rem;
+}
+.contact-label::before {
+  content: '';
+  width: 2rem; height: 1px;
+  background: var(--accent);
+}
+
+.contact-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: clamp(4rem, 7vw, 7rem);
+  line-height: 0.88;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  margin-bottom: 2.5rem;
+}
+
+.contact-title em {
+  font-style: italic;
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--white);
+}
+
+.contact-desc {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--mid);
+  max-width: 400px;
+  margin-bottom: 3rem;
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.contact-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.contact-item-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.contact-item-value {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 0.05em;
+  color: var(--white);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.contact-item-value:hover { color: var(--accent); }
+
+.contact-item-sub {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--mid);
+  letter-spacing: 0.05em;
+}
+
+/* ── RIGHT PANEL (FORM) ── */
+.contact-right {
+  padding: 6rem 3rem 4rem 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.form-group {
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.form-label {
+  display: block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.6rem;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(245,242,232,0.2);
+  outline: none;
+  color: var(--white);
+  font-family: 'Barlow', sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
+  padding: 0.6rem 0;
+  transition: border-color 0.3s;
+  cursor: none;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  border-color: var(--accent);
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: rgba(245,242,232,0.2);
+  font-weight: 300;
+}
+
+.form-textarea {
+  resize: none;
+  height: 100px;
+  line-height: 1.6;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.form-submit {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: var(--accent);
+  color: var(--black);
+  border: none;
+  padding: 1rem 2.5rem;
+  cursor: none;
+  transition: background 0.2s, transform 0.2s;
+  margin-top: 1rem;
+}
+.form-submit:hover { background: #c8ff20; transform: translateX(4px); }
+
+.form-submit svg { transition: transform 0.2s; }
+.form-submit:hover svg { transform: translateX(4px); }
+
+/* ── WHATSAPP BUTTON ── */
+.form-divider {
+  text-align: center;
+  margin: 1.5rem 0;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  color: rgba(245,242,232,0.25);
+}
+
+.wa-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: transparent;
+  color: #25d366;
+  border: 1px solid #25d366;
+  padding: 0.9rem 2rem;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+  cursor: none;
+}
+.wa-btn:hover {
+  background: #25d366;
+  color: var(--black);
+}
+
+/* Success state */
+.form-success {
+  display: none;
+  text-align: center;
+  padding: 3rem;
+}
+.form-success.show { display: block; }
+.form-success-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+.form-success-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+.form-success-msg {
+  font-size: 0.9rem;
+  color: var(--mid);
+  line-height: 1.7;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  nav { padding: 1rem 1.5rem; }
+  main { grid-template-columns: 1fr; }
+  .contact-left { padding: 5rem 1.5rem 3rem; border-right: none; border-bottom: 1px solid rgba(245,242,232,0.06); }
+  .contact-right { padding: 3rem 1.5rem 4rem; }
+  .form-row { grid-template-columns: 1fr; gap: 0; }
+}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+
+<nav>
+  <a href="/" class="nav-logo">AI<span>DEAS</span></a>
+  <a href="/" class="nav-back">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+      <path d="M11 7H3M7 3L3 7l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+    </svg>
+    <span data-i18n="nav.back">Volver</span>
+  </a>
+  <div class="lang-toggle">
+    <button class="lang-btn active" id="btn-es" onclick="setLang('es')">ES</button>
+    <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+  </div>
+</nav>
+
+<main>
+
+  <!-- LEFT -->
+  <div class="contact-left">
+    <div class="contact-label" data-i18n="c.label">Hablemos</div>
+    <h1 class="contact-title">
+      <span data-i18n="c.title1">Cuéntanos</span><br>
+      <em data-i18n="c.title2">Tu Proyecto</em>
+    </h1>
+    <p class="contact-desc" data-i18n="c.desc">
+      Dinos qué estás construyendo y te mostramos exactamente cómo la IA puede hacerlo más rápido, inteligente y rentable.
+    </p>
+
+    <div class="contact-details">
+      <div class="contact-item">
+        <div class="contact-item-label" data-i18n="c.mexico">México</div>
+        <a href="/cdn-cgi/l/email-protection#d8b0b7b4b998b9b1bcbdb9abf6b4b9ac" class="contact-item-value"><span class="__cf_email__" data-cfemail="d7bfb8bbb697b6beb3b2b6a4f9bbb6a3">[email&#160;protected]</span></a>
+        <div class="contact-item-sub">Querétaro, México</div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-label" data-i18n="c.nz">Nueva Zelanda</div>
+        <a href="/cdn-cgi/l/email-protection#c9a1aca5a5a689a8a0adaca8bae7a7b3" class="contact-item-value"><span class="__cf_email__" data-cfemail="9ff7faf3f3f0dffef6fbfafeecb1f1e5">[email&#160;protected]</span></a>
+        <div class="contact-item-sub">Christchurch, New Zealand</div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-label" data-i18n="c.response">Tiempo de respuesta</div>
+        <div class="contact-item-value" style="cursor:default" data-i18n="c.response-val">Menos de 24 horas</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT (FORM) -->
+  <div class="contact-right">
+
+    <form id="contact-form" action="https://formspree.io/f/mlgpbdgn" method="POST">
+      <input type="hidden" name="_subject" id="form-subject" value="Nuevo contacto desde aideas.lat">
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" data-i18n="f.name">Nombre</label>
+          <input class="form-input" type="text" name="name" required
+            placeholder="María González" data-i18n-ph="f.name-ph">
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="f.email">Email</label>
+          <input class="form-input" type="email" name="email" required
+            placeholder="maria@empresa.com">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" data-i18n="f.phone">WhatsApp / Teléfono</label>
+        <input class="form-input" type="tel" name="phone"
+          placeholder="+52 442 123 4567">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" data-i18n="f.message">Mensaje</label>
+        <textarea class="form-textarea" name="message" required
+          data-i18n-ph="f.message-ph" placeholder="Cuéntanos sobre tu negocio y qué quieres automatizar..."></textarea>
+      </div>
+
+      <button type="submit" class="form-submit">
+        <span data-i18n="f.submit">Enviar Mensaje</span>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+        </svg>
+      </button>
+
+      <div class="form-divider">
+        <span data-i18n="f.or">— o también —</span>
+      </div>
+
+      <a href="#" id="wa-btn" class="wa-btn" target="_blank">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        <span data-i18n="f.wa">Continuar por WhatsApp</span>
+      </a>
+    </form>
+
+    <div class="form-success" id="form-success">
+      <div class="form-success-icon">✦</div>
+      <div class="form-success-title" data-i18n="f.success-title">Mensaje Enviado</div>
+      <p class="form-success-msg" data-i18n="f.success-msg">Gracias por contactarnos. Te responderemos en menos de 24 horas.</p>
+    </div>
+
+  </div>
+</main>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// ── TRANSLATIONS ──
+const i18n = {
+  en: {
+    'nav.back': 'Back',
+    'c.label': "Let's Talk",
+    'c.title1': 'Tell Us About',
+    'c.title2': 'Your Project',
+    'c.desc': "Tell us what you're building and we'll show you exactly how AI can make it faster, smarter, and more profitable.",
+    'c.mexico': 'Mexico',
+    'c.nz': 'New Zealand',
+    'c.response': 'Response time',
+    'c.response-val': 'Under 24 hours',
+    'f.name': 'Name',
+    'f.name-ph': 'Maria González',
+    'f.email': 'Email',
+    'f.phone': 'WhatsApp / Phone',
+    'f.message': 'Message',
+    'f.message-ph': 'Tell us about your business and what you want to automate...',
+    'f.submit': 'Send Message',
+    'f.wa': 'Continue on WhatsApp',
+    'f.or': '— or —',
+    'f.success-title': 'Message Sent',
+    'f.success-msg': 'Thanks for reaching out. We will get back to you within 24 hours.',
+  },
+  es: {
+    'nav.back': 'Volver',
+    'c.label': 'Hablemos',
+    'c.title1': 'Cuéntanos',
+    'c.title2': 'Tu Proyecto',
+    'c.desc': 'Dinos qué estás construyendo y te mostramos exactamente cómo la IA puede hacerlo más rápido, inteligente y rentable.',
+    'c.mexico': 'México',
+    'c.nz': 'Nueva Zelanda',
+    'c.response': 'Tiempo de respuesta',
+    'c.response-val': 'Menos de 24 horas',
+    'f.name': 'Nombre',
+    'f.name-ph': 'María González',
+    'f.email': 'Email',
+    'f.phone': 'WhatsApp / Teléfono',
+    'f.message': 'Mensaje',
+    'f.message-ph': 'Cuéntanos sobre tu negocio y qué quieres automatizar...',
+    'f.submit': 'Enviar Mensaje',
+    'f.wa': 'Continuar por WhatsApp',
+    'f.or': '— o también —',
+    'f.success-title': 'Mensaje Enviado',
+    'f.success-msg': 'Gracias por contactarnos. Te responderemos en menos de 24 horas.',
+  }
+};
+
+const params = new URLSearchParams(window.location.search);
+let currentLang = params.get('lang') || 'es';
+
+function setLang(lang) {
+  currentLang = lang;
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+  document.documentElement.lang = lang;
+  document.title = lang === 'en' ? 'Contact — AIDEAS' : 'Contacto — AIDEAS';
+  document.getElementById('form-subject').value = lang === 'en'
+    ? 'New contact from aideas.nz'
+    : 'Nuevo contacto desde aideas.lat';
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (i18n[lang][key] !== undefined) el.textContent = i18n[lang][key];
+  });
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+    const key = el.getAttribute('data-i18n-ph');
+    if (i18n[lang][key] !== undefined) el.placeholder = i18n[lang][key];
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => setLang(currentLang));
+
+// ── WHATSAPP URL BUILDER ──
+const WA_NUMBER = '64210643428';
+
+function buildWaUrl() {
+  const name    = document.querySelector('input[name="name"]').value.trim();
+  const email   = document.querySelector('input[name="email"]').value.trim();
+  const phone   = document.querySelector('input[name="phone"]').value.trim();
+  const lang    = currentLang;
+
+  let msg;
+  if (lang === 'en') {
+    msg = `Hi, I'd like to talk about my project with Diego from AIDEAS.\n\nName: ${name || '—'}\nEmail: ${email || '—'}\nWhatsApp/Phone: ${phone || '—'}`;
+  } else {
+    msg = `Hola, quisiera hablar de mi proyecto con Diego de AIDEAS.\n\nNombre: ${name || '—'}\nEmail: ${email || '—'}\nWhatsApp/Teléfono: ${phone || '—'}`;
+  }
+
+  return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
+}
+
+// Update WA link whenever any field changes
+document.querySelectorAll('#contact-form input, #contact-form textarea').forEach(el => {
+  el.addEventListener('input', () => {
+    document.getElementById('wa-btn').href = buildWaUrl();
+  });
+});
+
+// Set initial URL on load
+document.getElementById('wa-btn').href = buildWaUrl();
+
+// ── FORM SUBMIT ──
+document.getElementById('contact-form').addEventListener('submit', async e => {
+  e.preventDefault();
+  const form = e.target;
+  const btn = form.querySelector('.form-submit');
+  btn.style.opacity = '0.5';
+  btn.disabled = true;
+
+  try {
+    const res = await fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    });
+
+    if (res.ok) {
+      form.style.display = 'none';
+      document.getElementById('form-success').classList.add('show');
+    } else {
+      btn.style.opacity = '1';
+      btn.disabled = false;
+    }
+  } catch {
+    btn.style.opacity = '1
