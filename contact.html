@@ -401,12 +401,12 @@ main {
     <div class="contact-details">
       <div class="contact-item">
         <div class="contact-item-label" data-i18n="c.mexico">México</div>
-        <a href="#" class="contact-item-value" id="email-mx-link">—</a>
+        <a href="#" class="contact-item-value" id="email-mx-link" style="opacity:0">—</a>
         <div class="contact-item-sub">Querétaro, México</div>
       </div>
       <div class="contact-item">
         <div class="contact-item-label" data-i18n="c.nz">Nueva Zelanda</div>
-        <a href="#" class="contact-item-value" id="email-nz-link">—</a>
+        <a href="#" class="contact-item-value" id="email-nz-link" style="opacity:0">—</a>
         <div class="contact-item-sub">Christchurch, New Zealand</div>
       </div>
       <div class="contact-item">
@@ -486,8 +486,8 @@ main {
   document.addEventListener('DOMContentLoaded', () => {
     const mxLink = document.getElementById('email-mx-link');
     const nzLink = document.getElementById('email-nz-link');
-    if (mxLink) { mxLink.textContent = mxEmail; mxLink.href = 'mailto:' + mxEmail; }
-    if (nzLink) { nzLink.textContent = nzEmail; nzLink.href = 'mailto:' + nzEmail; }
+    if (mxLink) { mxLink.textContent = mxEmail; mxLink.href = 'mailto:' + mxEmail; mxLink.style.opacity = '1'; }
+    if (nzLink) { nzLink.textContent = nzEmail; nzLink.href = 'mailto:' + nzEmail; nzLink.style.opacity = '1'; }
   });
 })();
 // ── TRANSLATIONS ──
