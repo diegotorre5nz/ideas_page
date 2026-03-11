@@ -1721,6 +1721,11 @@ function setLang(lang) {
   });
   const ph = document.getElementById('chat-placeholder');
   if (ph) ph.placeholder = lang === 'es' ? 'Escribe un mensaje...' : 'Type a message...';
+  // Restart chat in new language
+  if (typeof runChat === 'function') {
+    if (chatTimer) clearTimeout(chatTimer);
+    runChat();
+  }
 }
 
 // Auto-detect language based on domain
@@ -1797,4 +1802,27 @@ function addMessage(msg, delay) {
 function runChat() {
   container.innerHTML = '';
   const lang = currentLang;
-  
+    const msgs = chatMessages[lang] || chatMessages.es;
+  let delay = 500;
+  const timers = [];
+
+  msgs.forEach(msg => {
+    timers.push(addMessage(msg, delay));
+    delay += msg.role === 'bot' ? 1800 : 1200;
+  });
+
+  // Restart after last message
+  chatTimer = setTimeout(() => {
+    runChat();
+  }, delay + 2000);
+}
+
+// Start chat on page load
+document.addEventListener('DOMContentLoaded', () => {
+  runChat();
+});
+
+// Restart chat when language changes (already handled in setLang via runChat call)
+</script>
+</body>
+</html>
