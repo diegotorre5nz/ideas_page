@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contacto — AIDEAS</title>
+<title>Contacto — AIdeas</title>
 <meta name="description" content="Contáctanos para automatizar tu negocio con IA y WhatsApp. México y Nueva Zelanda.">
 <link rel="canonical" href="https://aideas.lat/contact.html">
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,700;0,900;1,700&family=Barlow:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -375,7 +375,7 @@ main {
 <div class="cursor" id="cursor"></div>
 
 <nav>
-  <a href="/" class="nav-logo">AI<span>DEAS</span></a>
+  <a href="/" class="nav-logo">AI<span>deas</span></a>
   <a href="/" class="nav-back">
     <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
       <path d="M11 7H3M7 3L3 7l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
@@ -535,7 +535,7 @@ function setLang(lang) {
   document.getElementById('btn-en').classList.toggle('active', lang === 'en');
   document.getElementById('btn-es').classList.toggle('active', lang === 'es');
   document.documentElement.lang = lang;
-  document.title = lang === 'en' ? 'Contact — AIDEAS' : 'Contacto — AIDEAS';
+  document.title = lang === 'en' ? 'Contact — AIdeas' : 'Contacto — AIdeas';
   document.getElementById('form-subject').value = lang === 'en'
     ? 'New contact from aideas.nz'
     : 'Nuevo contacto desde aideas.lat';
@@ -562,12 +562,12 @@ function buildWaUrl() {
 
   let lines = [];
   if (lang === 'en') {
-    lines.push("Hi, I'd like to talk about my project with Diego from AIDEAS.");
+    lines.push("Hi, I'd like to talk about my project with Diego from AIdeas.");
     if (name)  lines.push('Name: ' + name);
     if (email) lines.push('Email: ' + email);
     if (phone) lines.push('WhatsApp/Phone: ' + phone);
   } else {
-    lines.push('Hola, quisiera hablar de mi proyecto con Diego de AIDEAS.');
+    lines.push('Hola, quisiera hablar de mi proyecto con Diego de AIdeas.');
     if (name)  lines.push('Nombre: ' + name);
     if (email) lines.push('Email: ' + email);
     if (phone) lines.push('WhatsApp/Teléfono: ' + phone);
